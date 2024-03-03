@@ -1,7 +1,6 @@
-
 import pandas as pd
 
-msg = pd.read_csv('D:/STUDY/MSC IT - II/Practical All Subject/ML/prac9/naivetext.csv', names=['message', 'label'])
+msg = pd.read_csv('C:/Users/kamle/Downloads/ML/prac9/naivetext.csv', names=['message', 'label'])
 print('The dimensions of the dataset', msg.shape)
 
 msg['labelnum'] = msg.label.map({'pos': 1, 'neg': 0})
@@ -27,7 +26,7 @@ xtrain_dtm = count_vect.fit_transform(xtrain)
 xtest_dtm = count_vect.transform(xtest)
 
 # Print feature names
-print(count_vect.get_feature_names())
+print(count_vect.get_feature_names_out())
 
 # Convert sparse matrix to DataFrame for better representation
 df_train = pd.DataFrame(xtrain_dtm.toarray(), columns=count_vect.get_feature_names_out())
@@ -56,6 +55,10 @@ predicted_new = clf.predict(X_new_counts)
 
 for doc, category in zip(docs_new, predicted_new):
     print('%s -> %s' % (doc, category))
+
+
+
+
 
 
 
